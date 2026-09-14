@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>Storytime</title>
+<meta name="theme-color" content="#5b7fff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="app">
+
+  <header class="topbar">
+    <div class="logo">📖 <span>Storytime</span></div>
+    <div class="topbar-actions">
+      <button id="voiceToggle" class="mode-toggle" title="Choose narrator voice">🐝 Sunny</button>
+      <button id="speakerToggle" class="icon-btn" title="Mute/unmute" aria-label="Mute or unmute sound">🔊</button>
+    </div>
+  </header>
+
+  <div id="voicePicker" class="voice-picker" hidden></div>
+
+  <main id="mainView">
+    <section id="openScreen" class="open-screen">
+      <div class="open-card">
+        <div class="open-mascot bounce">📚</div>
+        <h1>Pick a storybook to open</h1>
+        <p>Choose a PDF from your device. Nothing is uploaded — it all stays on this device.</p>
+        <label for="fileInput" class="control-btn primary open-btn">📂 Open a Book</label>
+        <input id="fileInput" type="file" accept="application/pdf" hidden>
+        <div id="openError" class="open-error"></div>
+      </div>
+    </section>
+
+    <section id="readerScreen" class="reader-screen" hidden>
+      <div class="page-stage">
+        <button id="prevBtn" class="page-arrow left" aria-label="Previous page">◀</button>
+        <div class="page-canvas-wrap">
+          <canvas id="pageCanvas"></canvas>
+        </div>
+        <button id="nextBtn" class="page-arrow right" aria-label="Next page">▶</button>
+      </div>
+
+      <div class="reader-controls">
+        <button id="closeBookBtn" class="control-btn secondary">📕 Close Book</button>
+        <div id="pageIndicator" class="page-indicator">Page 1 of 1</div>
+        <button id="readBtn" class="control-btn primary">🔊 Read This Page</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="loadingOverlay" class="loading-overlay" hidden>
+    <div class="loading-card">
+      <div class="loading-mascot bounce">🐝</div>
+      <div class="loading-title">Waking up my voice&hellip;</div>
+      <div class="loading-bar-track"><div id="loadingBar" class="loading-bar"></div></div>
+      <div id="loadingPct" class="loading-pct">Getting ready to talk (one-time download)</div>
+    </div>
+  </div>
+
+</div>
+
+<script type="module" src="/src/app.js"></script>
+</body>
+</html>
